@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class BackgroundTile : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject[] Figures;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        Initialize();
+    }
+    private void Initialize()
+    {
+        int randomFigure = Random.Range(0, Figures.Length);
+        GameObject go = Instantiate(Figures[randomFigure], transform.position, Quaternion.identity);
+        go.transform.parent = this.transform;
+        go.name = this.gameObject.name;
     }
 }
